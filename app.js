@@ -24,10 +24,11 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((error) => console.error("MongoDB connection error:", error));
 
-app.use(express.static("public"));
+// Serve static files from the "public" or "frontend" directory
+app.use(express.static("public")); // or replace 'public' with your frontend directory name
 
-app.get("/", (req, res) => {
-  res.sendFile("index.html", { root: "public" });
+app.get("*", (req, res) => {
+  res.sendFile("index.html", { root: "public" }); // Update the path if your `index.html` is elsewhere
 });
 
 // Route setup
