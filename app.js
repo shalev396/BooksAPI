@@ -34,7 +34,7 @@ app.get("*", (req, res) => {
 // Route setup
 app.use("/api/users", userRoutes);
 app.use("/api/books", bookRoutes);
-app.use("/api/books", reviewRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
