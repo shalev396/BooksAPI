@@ -24,17 +24,16 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((error) => console.error("MongoDB connection error:", error));
 
-// Serve static files from the "public" or "frontend" directory
-app.use(express.static("public")); // or replace 'public' with your frontend directory name
+app.use(express.static("public"));
 
-app.get("*", (req, res) => {
-  res.sendFile("index.html", { root: "public" }); // Update the path if your `index.html` is elsewhere
+app.get("/", (req, res) => {
+  res.sendFile("index.html", { root: "public" });
 });
 
 // Route setup
 app.use("/api/users", userRoutes);
 app.use("/api/books", bookRoutes);
-app.use("/api/reviews", reviewRoutes);
+app.use("/api/books", reviewRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
